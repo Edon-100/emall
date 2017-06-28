@@ -2,7 +2,7 @@
 * @Author: Edon
 * @Date:   2017-06-21 15:25:53
 * @Last Modified by:   Administrator
-* @Last Modified time: 2017-06-23 10:52:42
+* @Last Modified time: 2017-06-27 17:31:08
 */
 'use strict';
 var webpack           = require('webpack');
@@ -12,10 +12,11 @@ var HtmlWebpackPlugin = require('html-webpack-plugin');
 var WEBPACK_ENV       = process.env.WEBPACK_ENV || 'dev';
 console.log(WEBPACK_ENV);
 //获取html-webpack-plugin参数的方法
-var getHtmlconfig =function(name){
+var getHtmlconfig =function(name,title){
     return {
         template     : './src/view/'+name+'.html',
         filename     : 'view/'+name+'.html',
+        title        : title,
         inject       : true,
         hash         : true,
         chunks       : ['common',name]
@@ -23,9 +24,11 @@ var getHtmlconfig =function(name){
 }
  var config = {
      entry:{
-     	'common':['./src/page/common/index.js'],
+     	
      	'index':['./src/page/index/index.js'],
-     	'login':['./src/page/login/index.js']
+        'login':['./src/page/login/index.js'],
+        'common':['./src/page/common/index.js'], 
+     	'result':['./src/page/result/index.js'],
      },
      output : {
          path       : __dirname + '/dist/',
@@ -43,8 +46,18 @@ var getHtmlconfig =function(name){
      			 // 	loader:ExtractTextPlugin.extract("style-loader","css-loader")
                 {test: /\.css$/,loader:  ExtractTextPlugin.extract("style-loader","css-loader")},
                 {test: /\.(gif|jpg|png|woff|svg|eot|ttf)\??.*$/,loader: 'url-loader?limit=100&name=resource/[name].[ext]'},
-    		]
+    		    {test: /\.string$/,loader: 'html-loader' }
+            ]
   },
+     resolve : {
+        alias : {
+            util          : __dirname + '/src/util',
+            page          : __dirname + '/src/page',
+            service       : __dirname + '/src/service',
+            image         : __dirname + '/src/image',
+            node_modules  : __dirname + '/node_modules'
+        }
+     },
      plugins: [  
                 //独立通用模板到js/base.js
         	 new webpack.optimize.CommonsChunkPlugin({
@@ -54,11 +67,15 @@ var getHtmlconfig =function(name){
              //把css单独打包到文件夹里
      	 new ExtractTextPlugin("css/[name].css"),
          //html模板的处理
-         new HtmlWebpackPlugin(getHtmlconfig('index')),
-         new HtmlWebpackPlugin(getHtmlconfig('login')),
+         new HtmlWebpackPlugin(getHtmlconfig('index','首页')),
+         new HtmlWebpackPlugin(getHtmlconfig('login','用户登录')),
+         new HtmlWebpackPlugin(getHtmlconfig('result','操作结果'))
      ]
  };
- if('dev'===WEBPACK_ENV){
+ // if('dev'===WEBPACK_ENV){
+ //    config.entry.common.push('webpack-dev-server/client?http://localhost:8088/');
+ // }
+if('dev' === WEBPACK_ENV){
     config.entry.common.push('webpack-dev-server/client?http://localhost:8088/');
- }
+}
 module.exports = config;
