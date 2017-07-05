@@ -2,7 +2,7 @@
 * @Author: Edon
 * @Date:   2017-06-21 15:25:53
 * @Last Modified by:   Administrator
-* @Last Modified time: 2017-06-27 17:31:08
+* @Last Modified time: 2017-07-05 08:34:56
 */
 'use strict';
 var webpack           = require('webpack');
@@ -25,10 +25,15 @@ var getHtmlconfig =function(name,title){
  var config = {
      entry:{
      	
-     	'index':['./src/page/index/index.js'],
-        'login':['./src/page/login/index.js'],
-        'common':['./src/page/common/index.js'], 
-     	'result':['./src/page/result/index.js'],
+     	'index'              :['./src/page/index/index.js'],
+        'user-login'         :['./src/page/user-login/index.js'],
+        'common'             :['./src/page/common/index.js'], 
+     	'result'             :['./src/page/result/index.js'],
+        'user-register'      :['./src/page/user-register/index.js'],
+        'user-pass-reset'    :['./src/page/user-pass-reset/index.js'],
+        'user-center'        :['./src/page/user-center/index.js'],
+        'user-center-update' :['./src/page/user-center-update/index.js'],
+        'user-pass-update'   :['./src/page/user-pass-update/index.js']
      },
      output : {
          path       : __dirname + '/dist/',
@@ -55,7 +60,8 @@ var getHtmlconfig =function(name,title){
             page          : __dirname + '/src/page',
             service       : __dirname + '/src/service',
             image         : __dirname + '/src/image',
-            node_modules  : __dirname + '/node_modules'
+            node_modules  : __dirname + '/node_modules',
+            service       : __dirname + '/src/service',
         }
      },
      plugins: [  
@@ -68,8 +74,13 @@ var getHtmlconfig =function(name,title){
      	 new ExtractTextPlugin("css/[name].css"),
          //html模板的处理
          new HtmlWebpackPlugin(getHtmlconfig('index','首页')),
-         new HtmlWebpackPlugin(getHtmlconfig('login','用户登录')),
-         new HtmlWebpackPlugin(getHtmlconfig('result','操作结果'))
+         new HtmlWebpackPlugin(getHtmlconfig('user-login','用户登录')),
+         new HtmlWebpackPlugin(getHtmlconfig('user-register','用户注册')),
+         new HtmlWebpackPlugin(getHtmlconfig('result','操作结果')),
+         new HtmlWebpackPlugin(getHtmlconfig('user-pass-reset','重置密码')),
+         new HtmlWebpackPlugin(getHtmlconfig('user-center','个人中心')),
+         new HtmlWebpackPlugin(getHtmlconfig('user-center-update','修改个人信息')),
+         new HtmlWebpackPlugin(getHtmlconfig('user-pass-update','修改密码'))
      ]
  };
  // if('dev'===WEBPACK_ENV){

@@ -2,7 +2,7 @@
 * @Author: Administrator
 * @Date:   2017-06-24 13:52:46
 * @Last Modified by:   Administrator
-* @Last Modified time: 2017-06-27 10:06:03
+* @Last Modified time: 2017-07-05 09:46:10
 */
 
 'use strict';
@@ -54,13 +54,13 @@ var _mm  = {
 
     },
     successTips : function(msg){
-        alert(msg | '操作成功');
+        alert(msg || '操作成功');
     },
     errorTips : function(msg){
-        alert(msg | '哪里错误了？');
+        alert(msg || '哪里错误了？');
     },
     //字段的验证，支持非空、手机、邮箱的判断
-    Validate : function(value,type){
+    validate : function(value,type){
         var value = $.trim(value);
         //非空验证
         if('require' === type){

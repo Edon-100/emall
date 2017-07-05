@@ -1,8 +1,8 @@
 /*
 * @Author: Administrator
 * @Date:   2017-06-26 19:12:12
-* @Last Modified by:   edon92
-* @Last Modified time: 2017-06-26 19:33:49
+* @Last Modified by:   Administrator
+* @Last Modified time: 2017-07-04 12:39:29
 */
 /*.header{
 	text-align: center;
@@ -52,4 +52,14 @@
     position: absolute;
     height: 44px;
     width: 80px;
+}
+/* 面包屑导航 */
+.crumb{
+   margin-bottom: 15px;
+    height: 50px;
+    line-height: 50px;
+    background: #eee;
+    color: #888;
+    font-size: 14px;
+    border-top: 2px solid #c60023;
 }
