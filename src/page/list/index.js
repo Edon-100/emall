@@ -1,8 +1,8 @@
 /*
 * @Author: mmall
 * @Date:   2017-05-27 17:57:49
-* @Last Modified by:   Rosen
-* @Last Modified time: 2017-05-28 19:48:16
+* @Last Modified by:   Administrator
+* @Last Modified time: 2017-07-23 17:17:50
 */
 
 'use strict';
@@ -21,7 +21,7 @@ var page = {
             categoryId      : _mm.getUrlParam('categoryId') || '',
             orderBy         : _mm.getUrlParam('orderBy')    || 'default',
             pageNum         : _mm.getUrlParam('pageNum')    || 1,
-            pageSize        : _mm.getUrlParam('pageSize')   || 20
+            pageSize        : _mm.getUrlParam('pageSize')   || 15
         }
     },
     init : function(){
