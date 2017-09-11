@@ -2,7 +2,7 @@
 * @Author: Rosen
 * @Date:   2017-05-08 15:28:19
 * @Last Modified by:   Administrator
-* @Last Modified time: 2017-07-27 15:13:45
+* @Last Modified time: 2017-07-31 20:10:42
 */
 var webpack             = require('webpack');
 var ExtractTextPlugin   = require('extract-text-webpack-plugin');
@@ -10,6 +10,7 @@ var HtmlWebpackPlugin   = require('html-webpack-plugin');
 
 // 环境变量配置，dev / online
 var WEBPACK_ENV         = process.env.WEBPACK_ENV || 'dev';
+console.log(WEBPACK_ENV);
 
 // 获取html-webpack-plugin参数的方法 
 var getHtmlConfig = function(name, title){
@@ -44,16 +45,18 @@ var config = {
         'result'            : ['./src/page/result/index.js'],
         'about'             : ['./src/page/about/index.js'],
         'activity'          : ['./src/page/activity/index.js'],
+        'bt'                : ['./src/page/bt/index.js']
     },
     output: {
         path: __dirname + '/dist/',
-        publicPath : 'dev' === WEBPACK_ENV ? '/dist/'  : '//s.happymmall.com/mmall-fee/dist/',
+        publicPath : 'dev' === WEBPACK_ENV ? '/dist/'  : '//s.edon-plus.com/emall-test/dist/',
         filename: 'js/[name].js'
     },
     externals : {
         'jquery' : 'window.jQuery'
     },
     module: {
+
         loaders: [
             { test: /\.css$/, loader: ExtractTextPlugin.extract("style-loader","css-loader") },
             { test: /\.(gif|png|jpg|woff|svg|eot|ttf)\??.*$/, loader: 'url-loader?limit=100&name=resource/[name].[ext]' },
@@ -102,6 +105,7 @@ var config = {
         new HtmlWebpackPlugin(getHtmlConfig('result', '操作结果')),
         new HtmlWebpackPlugin(getHtmlConfig('about', '关于MMALL')),
         new HtmlWebpackPlugin(getHtmlConfig('activity', '放暑假啦！')),
+        new HtmlWebpackPlugin(getHtmlConfig('bt', 'bootstrap')),
     ]
 };
 

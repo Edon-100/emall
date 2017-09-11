@@ -2,7 +2,7 @@
 * @Author: Administrator
 * @Date:   2017-07-09 10:16:41
 * @Last Modified by:   Administrator
-* @Last Modified time: 2017-07-10 17:17:32
+* @Last Modified time: 2017-07-30 14:31:08
 */
 
 'use strict';
@@ -21,7 +21,6 @@ var page = {
 	init : function(){
 		this.onLoad();
 		this.bindEvent();	
-
 	},
 	onLoad : function(){
 		if(!this.data.productId){
@@ -58,14 +57,11 @@ var page = {
                 productId   : _this.data.productId,
                 count       : $('.p-count').val()
             }, function(res){
-                alert(1);
                 window.location.href = './result.html?type=cart-add';
             }, function(errMsg){
-            	alert(2);
                 _mm.errorTips(errMsg);
             });
         });
-
 	},
 	LoadDetail : function(){
 		var _this 		= this,

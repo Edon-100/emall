@@ -6,8 +6,24 @@
 */
 /* 最外层容器 */
 .page-warp{
-    padding: 40px 0;
-    background: #e72955;
+    /*padding: 40px 0;*/
+    /*background: #e72955;*/
+    background: url('../../image/banner/bg.jpg') no-repeat center top ;
+   
+    height: 600px;
+    width: 100%;
+}
+.inner1{
+    float: left;
+    background-color: rgb(249, 196, 0);
+    height: 600px;
+    width: 100px;
+}
+.inner2{
+    float: right;
+    background-color: rgb(249, 196, 0);
+    height: 600px;
+    width: 100px;
 }
 /* 表单框 */
 .user-con{
@@ -15,6 +31,7 @@
     margin: 0 auto;
     width: 400px;
     background: #fff;
+    margin: 100px 0px auto auto;
 }
 .user-con .user-title{
     text-align: center;

@@ -31,7 +31,7 @@
     top: 34px;
     display: block;
     font-size: 36px;
-    color: #c60023;
+    color: #3366FF;
     font-weight: bold;
     text-decoration: none;
 }
@@ -45,13 +45,14 @@
     line-height: 40px;
     padding-left: 10px;
     font-size: 15px;
-    border: 2px solid #c60023;
+    border: 2px solid #3366FF;
     outline: none;
 }
 .header .search-con .search-btn{
     position: absolute;
     height: 44px;
     width: 80px;
+    background-color: #3366CC;
 }
 /* 面包屑导航 */
 .crumb{
@@ -61,5 +62,5 @@
     background: #eee;
     color: #888;
     font-size: 14px;
-    border-top: 2px solid #c60023;
+    border-top: 2px solid #3366FF;
 }
